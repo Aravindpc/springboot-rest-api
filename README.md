@@ -6,7 +6,7 @@
    
    1. Clone the project into local repository.
    2. Make sure you are having JDK 1.8 and Maven 3.6.3.
-   3. You can build the project by running ```mvn install -DskipTests```.
+   3. You can build the project by running ```mvn install -DskipTests``` by skipping the test cases.
    4. Once installed you can find ```springboot-rest-api-0.0.1-SNAPSHOT.jar``` inside the target folder.
    5. Run the application by ```java -jar springboot-rest-api-0.0.1-SNAPSHOT.jar``` command.
    6. On complete execution you can see something like 
@@ -116,6 +116,12 @@ http://localhost:8095/employee/get/abcd@gmail.com
 ```
 Post method
 http://localhost:8095/employee/save
+```
+Request Body
+```
+{
+    "employeeid": "abcde@gmail.com"
+}
 ```
 - This end point will save the employee given in the request body to employee table. 
 ```
