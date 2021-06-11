@@ -1,5 +1,5 @@
-# springboot-rest-api
- Basic REST API project using Springboot and Maven with MYSQL database
+# Springboot Rest API
+ Basic REST API project using Springboot and Maven with MYSQL database.
 
 ## How To Run
    This application is embedded with Tomcat 8 so there is no need to install tomcat on local machine.
@@ -360,7 +360,7 @@ Request Body
 ```
 {
     "scheduleid": 3,
-    "startDate": "29 Jun 2021",
+    "startDate": "02 Jun 2021",
     "endDate": "15 Jun 2021",
     "time": "09:55",
     "duration": 20,
@@ -375,7 +375,7 @@ Request Body
 ```
 {
     "scheduleid":3,
-    "startDate": "29 Jun 2021",
+    "startDate": "02 Jun 2021",
     "endDate": "15 Jun 2021",
     "time": "09:55",
     "duration": 20,
