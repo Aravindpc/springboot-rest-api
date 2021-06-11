@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.java.mysql.model.Schedule;
 import com.java.mysql.repository.ScheduleRepository;
 
-@Component
 @Service
 public class ScheduleService {
 
