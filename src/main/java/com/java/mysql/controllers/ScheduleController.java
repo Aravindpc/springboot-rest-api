@@ -3,7 +3,7 @@ package com.java.mysql.controllers;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.java.mysql.model.Employee;
 import com.java.mysql.model.Schedule;
+import com.java.mysql.service.EmployeeService;
 import com.java.mysql.service.ScheduleService;
 
 @RestController
@@ -24,6 +26,8 @@ public class ScheduleController {
 
 	@Autowired
 	ScheduleService scheduleService;
+	@Autowired
+	EmployeeService employeeService;
 	
 	@GetMapping(value="/getall")
 	public List<Schedule> getAllSchedules()
@@ -32,22 +36,27 @@ public class ScheduleController {
 	}
 	
 	@GetMapping(value="/get/{scheduleid}")
-	public Optional<Schedule> getSchedule(@PathVariable(value="scheduleid")Long scheduleId)
+	public Schedule getSchedule(@PathVariable(value="scheduleid")Long scheduleId)
 	{
 		return scheduleService.findOne(scheduleId);
 		
 	}
 	
-	@PostMapping("/save")
-	private Schedule saveSchedule(@RequestBody Schedule schedule)   
+	@PostMapping("/create")
+	private Schedule saveSchedule(@RequestBody @Valid Schedule schedule)   
 	{  
-	    return scheduleService.saveSchedule(schedule);  
+		Optional<Employee> emp=employeeService.findOne(schedule.getEmployee().getEmployeeid());
+	    schedule.setEmployee(emp.get());
+	    Schedule savedSchedule=scheduleService.saveSchedule(schedule);
+	    
+		return scheduleService.saveSchedule(savedSchedule);  
 	} 
 	
 	@PutMapping("/update/{scheduleid}")  
-	private Schedule update(@RequestBody Schedule schedule,@PathVariable(value="scheduleid")Long scheduleId)   
+	private Schedule update(@RequestBody @Valid Schedule schedule,@PathVariable(value="scheduleid")Long scheduleId)   
 	{  
-		Schedule existingSchedule=scheduleService.findOne(scheduleId).orElseThrow(EntityNotFoundException::new);
+		Optional<Employee> emp=employeeService.findOne(schedule.getEmployee().getEmployeeid());
+		Schedule existingSchedule=scheduleService.findOne(scheduleId);
 		existingSchedule.setScheduleid(scheduleId);
 		existingSchedule.setDuration(schedule.getDuration());
 		existingSchedule.setEndDate(schedule.getEndDate());
@@ -56,7 +65,7 @@ public class ScheduleController {
 		existingSchedule.setTime(schedule.getTime());
 		existingSchedule.setDuration(schedule.getDuration());
 		existingSchedule.setIsrepeated(schedule.isIsrepeated());
-		existingSchedule.setEmployee(schedule.getEmployee());
+		existingSchedule.setEmployee(emp.get());
 		return scheduleService.saveSchedule(existingSchedule);
 	}  
 	@DeleteMapping(value="/delete/{scheduleid}")

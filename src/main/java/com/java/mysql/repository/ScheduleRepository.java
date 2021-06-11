@@ -12,7 +12,7 @@ import com.java.mysql.model.Schedule;
 public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
 
 	@Modifying
-	@Query(value="delete from schedule where schedule_id=:name", nativeQuery = true)
+	@Query(value="delete from schedule where employee_id=:name", nativeQuery = true)
 	void deletebyEmployeeId(@Param("name")String employeeId);
 
 }

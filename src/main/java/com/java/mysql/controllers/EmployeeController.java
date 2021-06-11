@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.java.mysql.model.Employee;
-import com.java.mysql.model.Schedule;
 import com.java.mysql.service.EmployeeService;
 
 @RestController
@@ -38,23 +38,21 @@ public class EmployeeController {
 		return employeeService.findOne(employeeId);		
 	}
 	
-	@PostMapping("/save")
-	private Employee saveEmployee(@RequestBody Employee employee)   
-	{  
-	  
-	    return employeeService.saveEmployee(employee);  
+	@PostMapping("/create")
+	private Employee saveEmployee(@RequestBody  @Valid Employee employee)   
+	{  	Employee e=new Employee();
+	    e.setSchedule(employee.getSchedule());
+		e.setEmployeeid(employee.getEmployeeid());
+		System.out.print(e.getEmployeeid());
+	    return employeeService.saveEmployee(e);
 	} 
 	
 	@PutMapping("/update/{employeeid}")  
-	private Employee update(@RequestBody Employee employee,@PathVariable(value="employeeid")String employeeId)   
+	private Employee update(@RequestBody  @Valid Employee employee,@PathVariable(value="employeeid")String employeeId)   
 	{  
 		Employee existingEmployee=employeeService.findOne(employeeId).orElseThrow(EntityNotFoundException::new);
-		List<Schedule> schedules=employee.getSchedule();
-		for(int s=0;s<schedules.size();s++)
-		{
-			employeeService.updateSchedule(schedules.get(s));			
-		}
-		return employeeService.saveEmployee(existingEmployee);
+         employee.setEmployeeid(existingEmployee.getEmployeeid());
+		return employeeService.saveEmployee(employee);
 	}  
 	
 	@DeleteMapping(value="/delete/{employeeid}")

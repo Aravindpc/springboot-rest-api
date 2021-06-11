@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,7 @@ import com.java.mysql.model.Schedule;
 import com.java.mysql.repository.EmployeeRepository;
 import com.java.mysql.repository.ScheduleRepository;
 
+@Component
 @Service
 public class EmployeeService {
 

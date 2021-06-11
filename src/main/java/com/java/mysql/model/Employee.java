@@ -15,10 +15,11 @@ public class Employee implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@Column(name="employeeid")
 	private String employeeid;
 	
 	@OneToMany(mappedBy="employee",cascade= {CascadeType.REMOVE,CascadeType.ALL})
-	@JsonIgnoreProperties("employee")
+	@JsonIgnoreProperties(value="employee",allowSetters = true)
 	private List<Schedule> schedule= new ArrayList<Schedule>();
 	
 	public Employee(String employeeid) {
@@ -49,6 +50,9 @@ public class Employee implements Serializable{
 
 	public void setSchedule(List<Schedule> schedule) {
 		this.schedule = schedule;
+	        for(Schedule b : schedule) {
+	            b.setEmployee(this);
+	        }
 	}
 
 

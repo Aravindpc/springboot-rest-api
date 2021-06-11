@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.java.mysql.model.Schedule;
 import com.java.mysql.repository.ScheduleRepository;
 
+@Component
 @Service
 public class ScheduleService {
 
@@ -23,8 +25,8 @@ public class ScheduleService {
 	        return scheduleRepository.findAll();
 	    }
 
-	    public Optional<Schedule> findOne(Long id) {
-	        return scheduleRepository.findById(id);
+	    public Schedule findOne(Long id) {
+	        return scheduleRepository.findById(id).get();
 	    }
 	     
 	    public boolean deleteSchedule(Long id) {

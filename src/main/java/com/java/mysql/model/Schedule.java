@@ -5,7 +5,7 @@ import java.time.LocalTime;
 import java.util.Date;
 
 import javax.persistence.*;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -44,8 +44,8 @@ public class Schedule implements Serializable{
     @Column(name="frequency")
     private Frequency frequency;
     
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "schedule_id", nullable = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "employee_id")
 	@JsonIgnoreProperties("schedule")
 	private Employee employee;
 	
