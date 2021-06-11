@@ -227,7 +227,7 @@ Request Body
         },
         {
             "scheduleid": 2,
-            "startDate": "22 Jun 2021",
+            "startDate": "20 Jun 2021",
             "endDate": "23 Jun 2021",
             "time": "11:13",
             "duration": 20,
@@ -237,6 +237,7 @@ Request Body
     ]
 }
 ```
+This end point is capable to modify schedule of the employee with employee id ```abc@gmail.com```.
 Response message will be updated entity
 ```
 {
@@ -253,7 +254,7 @@ Response message will be updated entity
         },
         {
             "scheduleid": 2,
-            "startDate": "22 Jun 2021",
+            "startDate": "20 Jun 2021",
             "endDate": "23 Jun 2021",
             "time": "11:13",
             "duration": 20,
