@@ -1,8 +1,8 @@
 # springboot-rest-api
- Basic REST API project using Springboot and Maven.
+ Basic REST API project using Springboot and Maven with MYSQL database
 
 ## How To Run
-   This application is embedded withg Tomcat 8 so there is no need to install tomcat on local machine.
+   This application is embedded with Tomcat 8 so there is no need to install tomcat on local machine.
    
    1. Clone the project into local repository.
    2. Make sure you are having JDK 1.8 and Maven 3.6.3.
@@ -115,19 +115,94 @@ http://localhost:8095/employee/get/abcd@gmail.com
  
 ```
 Post method
-http://localhost:8095/employee/save
+http://localhost:8095/employee/create
 ```
 Request Body
 ```
 {
-    "employeeid": "abcde@gmail.com"
+    "employeeid": "abcde@gmail.com",
+    "schedule": [
+        {
+            "scheduleid": 11,
+            "startDate": "08 Jun 2021",
+            "endDate": "22 Jun 2021",
+            "time": "10:34",
+            "duration": 20,
+            "isrepeated": true,
+            "frequency": "WEEKLY",
+    "employee": {
+        "employeeid": "abcde@gmail.com"
+    }
+        },
+        {
+            "scheduleid": 12,
+            "startDate": "08 Jun 2021",
+            "endDate": "22 Jun 2021",
+            "time": "10:34",
+            "duration": 20,
+            "isrepeated": true,
+            "frequency": "WEEKLY",
+    "employee": {
+        "employeeid": "abcde@gmail.com"
+    }
+        },
+        {
+            "scheduleid": 13,
+            "startDate": "09 Jun 2021",
+            "endDate": "22 Jun 2021",
+            "time": "10:34",
+            "duration": 20,
+            "isrepeated": false,
+            "frequency": null,
+    "employee": {
+        "employeeid": "abcde@gmail.com"
+    }
+        }
+    ]
 }
 ```
-- This end point will save the employee given in the request body to employee table. 
+- This end point will save the employee and schedules given in the request body to employee table and schedule table and maps them accordingly. 
 ```
 {
     "employeeid": "abcde@gmail.com",
-    "schedule": []
+    "schedule": [
+        {
+            "scheduleid": 11,
+            "startDate": "08 Jun 2021",
+            "endDate": "22 Jun 2021",
+            "time": "10:34",
+            "duration": 20,
+            "isrepeated": true,
+            "frequency": "WEEKLY",
+    "employee": {
+        "employeeid": "abcde@gmail.com"
+    }
+        },
+        {
+            "scheduleid": 12,
+            "startDate": "08 Jun 2021",
+            "endDate": "22 Jun 2021",
+            "time": "10:34",
+            "duration": 20,
+            "isrepeated": true,
+            "frequency": "WEEKLY",
+    "employee": {
+        "employeeid": "abcde@gmail.com"
+    }
+        },
+        {
+            "scheduleid": 13,
+            "startDate": "09 Jun 2021",
+            "endDate": "22 Jun 2021",
+            "time": "10:34",
+            "duration": 20,
+            "isrepeated": false,
+            "frequency": null,
+    "employee": {
+        "employeeid": "abcde@gmail.com"
+    }
+        }
+    ]
 }
 ```
 
@@ -162,7 +237,7 @@ Request Body
     ]
 }
 ```
-Response message will be
+Response message will be updated entity
 ```
 {
     "employeeid": "abc@gmail.com",
