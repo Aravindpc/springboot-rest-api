@@ -129,10 +129,7 @@ Request Body
             "time": "10:34",
             "duration": 20,
             "isrepeated": true,
-            "frequency": "WEEKLY",
-    "employee": {
-        "employeeid": "abcde@gmail.com"
-    }
+            "frequency": "WEEKLY"
         },
         {
             "scheduleid": 12,
@@ -141,10 +138,7 @@ Request Body
             "time": "10:34",
             "duration": 20,
             "isrepeated": true,
-            "frequency": "WEEKLY",
-    "employee": {
-        "employeeid": "abcde@gmail.com"
-    }
+            "frequency": "WEEKLY"
         },
         {
             "scheduleid": 13,
@@ -153,10 +147,7 @@ Request Body
             "time": "10:34",
             "duration": 20,
             "isrepeated": false,
-            "frequency": null,
-    "employee": {
-        "employeeid": "abcde@gmail.com"
-    }
+            "frequency": null
         }
     ]
 }
@@ -173,10 +164,7 @@ Request Body
             "time": "10:34",
             "duration": 20,
             "isrepeated": true,
-            "frequency": "WEEKLY",
-    "employee": {
-        "employeeid": "abcde@gmail.com"
-    }
+            "frequency": "WEEKLY"
         },
         {
             "scheduleid": 12,
@@ -185,10 +173,7 @@ Request Body
             "time": "10:34",
             "duration": 20,
             "isrepeated": true,
-            "frequency": "WEEKLY",
-    "employee": {
-        "employeeid": "abcde@gmail.com"
-    }
+            "frequency": "WEEKLY"
         },
         {
             "scheduleid": 13,
@@ -197,10 +182,7 @@ Request Body
             "time": "10:34",
             "duration": 20,
             "isrepeated": false,
-            "frequency": null,
-    "employee": {
-        "employeeid": "abcde@gmail.com"
-    }
+            "frequency": null
         }
     ]
 }
