@@ -18,7 +18,7 @@
 #### Features:
   - REST API allows the devloper to access the data from the server using endpoints.
   - This spring application provide end points for accessing data from MYSQL database ```patientdb1```.
-  - The MYSQL database contains two tables as ```employee``` and ```schedule```.
+  - The MYSQL database ```patientdb1``` contains two tables as ```employee``` and ```schedule```.
   - Employee and Schedule has bidirectional One-To-Many relationship.
  ##### Main End Points:
  The main end points for the employee and schedule are given as
