@@ -15,7 +15,6 @@ import com.java.mysql.model.Schedule;
 import com.java.mysql.repository.EmployeeRepository;
 import com.java.mysql.repository.ScheduleRepository;
 
-@Component
 @Service
 public class EmployeeService {
 
