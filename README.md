@@ -84,7 +84,7 @@ http://localhost:8095/employee/getall
 Get method
 http://localhost:8095/employee/get/abcd@gmail.com
 ```
-- This end point will return the employee who has employee is as ```abcd@gmail.com``` as json 
+- This end point will return the employee who has employee id ```abcd@gmail.com``` 
 ```
 {
     "employeeid": "abcd@gmail.com",
@@ -288,3 +288,149 @@ On succesful deletion the delete method returns true.
 true
 ```
 There are similar methods for the schedule.
+
+
+#### End points of Schedule
+
+###### Get All schedule
+ 
+```
+Get method
+http://localhost:8095/schedule/getall
+```
+- This end point will return all the schedules as json 
+```
+[
+    {
+        "scheduleid": 1,
+        "startDate": "10 Jun 2021",
+        "endDate": "15 Jun 2021",
+        "time": "09:46",
+        "duration": 20,
+        "isrepeated": false,
+        "frequency": null,
+        "employee": {
+            "employeeid": "abcdef@gmail.com"
+        }
+    },
+    {
+        "scheduleid": 2,
+        "startDate": "10 Jun 2021",
+        "endDate": "15 Jun 2021",
+        "time": "09:46",
+        "duration": 20,
+        "isrepeated": false,
+        "frequency": null,
+        "employee": {
+            "employeeid": "abcdef@gmail.com"
+        }
+    }
+]
+```
+
+###### Get one schedule
+ 
+```
+Get method
+http://localhost:8095/schedule/get/1
+```
+- This end point will return the employee who has schedule id as ```1``` 
+```
+{
+    "scheduleid": 1,
+    "startDate": "10 Jun 2021",
+    "endDate": "15 Jun 2021",
+    "time": "09:46",
+    "duration": 20,
+    "isrepeated": false,
+    "frequency": null,
+    "employee": {
+        "employeeid": "abcdef@gmail.com"
+    }
+}
+```
+
+###### Create schedule for existing employee
+ 
+```
+Post method
+http://localhost:8095/schedule/create
+```
+Request Body
+```
+{
+    "scheduleid": 3,
+    "startDate": "29 Jun 2021",
+    "endDate": "15 Jun 2021",
+    "time": "09:55",
+    "duration": 20,
+    "isrepeated": true,
+    "frequency": "WEEKLY",
+    "employee": {
+        "employeeid": "abcdef@gmail.com"
+    }
+}
+```
+- This end point will save the schedule given in the request body to schedule table and maps it with employee accordingly. 
+```
+{
+    "scheduleid":3,
+    "startDate": "29 Jun 2021",
+    "endDate": "15 Jun 2021",
+    "time": "09:55",
+    "duration": 20,
+    "isrepeated": true,
+    "frequency": "WEEKLY",
+    "employee": {
+        "employeeid": "abcdef@gmail.com"
+    }
+}
+```
+
+###### Update schedule
+```
+Put method
+http://localhost:8095/schedule/update/1
+```
+Request Body 
+```
+{
+    "scheduleid": 1,
+    "startDate": "01 May 2021",
+    "endDate": "25 May 2021",
+    "time": "09:55",
+    "duration": 20,
+    "isrepeated": false,
+    "frequency": null,
+    "employee": {
+        "employeeid": "abcdef@gmail.com"
+    }
+}
+```
+Response message will be updated entity
+```
+{
+    "scheduleid": 1,
+    "startDate": "01 May 2021",
+    "endDate": "25 May 2021",
+    "time": "09:55",
+    "duration": 20,
+    "isrepeated": false,
+    "frequency": null,
+    "employee": {
+        "employeeid": "abcdef@gmail.com"
+    }
+}
+```
+
+###### Delete schedule
+```
+Delete method
+http://localhost:8095/schedule/delete/1
+```
+This method deletes the schedule.
+
+On succesful deletion the delete method returns true.
+```
+true
+```
